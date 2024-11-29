@@ -17,6 +17,7 @@ export default function Hackernews() {
         if (!response.ok) throw new Error("Something went wrong.");
         const data = await response.json();
         const top10 = await data.slice(0, 10);
+        // arbitrary delay to show shimmer loading
         await new Promise((resolve) => setTimeout(resolve, 500));
         await Promise.all(
           top10.map((id) => fetch(fetchStoryURL(id)).then((res) => res.json()))
@@ -36,7 +37,7 @@ export default function Hackernews() {
         {isLoading &&
           Array(10)
             .fill(null)
-            .map((i) => <ListSkeleton key={i} />)}
+            .map((_item, i) => <ListSkeleton key={Date.now() + i} />)}
         {!isLoading &&
           data.map((story) => (
             <li key={story.id}>
