@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import * as _ from "lodash-es";
 
 export default function MemoryGame({ images }) {
@@ -10,17 +10,19 @@ export default function MemoryGame({ images }) {
   const allFlipped = flipped.every((x) => x === true);
 
   const handleClick = (image, idx) => {
-    if (flipped[idx] === true) {
-      return;
-    } else if (lastIndex === null) {
-      setFlipped(flipped.map((_, index) => (index === idx ? true : _)));
-      setLastIndex(idx);
-    } else if (deck.current[lastIndex] === image) {
-      setFlipped(flipped.map((_, index) => (index === idx ? true : _)));
+    if (!flipped[idx]) {
+      if (deck.current[lastIndex] === image) {
+        setFlipped(flipped.map((_, index) => (index === idx ? true : _)));
+      } else {
+        setFlipped(
+          flipped.map((_, index) => (lastIndex === index ? false : _))
+        );
+      }
       setLastIndex(null);
-    } else {
-      setFlipped(flipped.map((_, index) => (lastIndex === index ? false : _)));
-      setLastIndex(null);
+      if (lastIndex === null) {
+        setFlipped(flipped.map((_, index) => (index === idx ? true : _)));
+        setLastIndex(idx);
+      }
     }
   };
 
