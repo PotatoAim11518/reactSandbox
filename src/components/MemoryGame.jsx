@@ -34,12 +34,11 @@ export default function MemoryGame({ images }) {
   return (
     <div>
       <h1>Memory Game</h1>
-      {/* <p>Last Index: {lastIndex}</p> */}
-      <ul className="flex flex-wrap gap-10">
+      <ul className="flex flex-wrap justify-center items-center gap-10 mt-10">
         {deck.current.map((image, i) => (
           <li key={image + i} onClick={() => handleClick(image, i)}>
             {!flipped[i] && (
-              <div className="absolute aspect-square w-64 rounded-2xl bg-black" />
+              <div className="absolute hover:bg-slate-500 aspect-square w-64 rounded-2xl bg-black transition" />
             )}
             <img
               src={image}
@@ -49,10 +48,15 @@ export default function MemoryGame({ images }) {
         ))}
       </ul>
       {allFlipped && (
-        <>
-          <div>Congratulations!</div>
-          <button onClick={handleReset}>Try again?</button>
-        </>
+        <div className="mt-10">
+          <div className="font-extrabold">Congratulations!</div>
+          <button
+            onClick={handleReset}
+            className="m-2 py-2 px-4 bg-slate-700 rounded-full hover:bg-white hover:text-black border-2 hover:border-2 transition"
+          >
+            Try again?
+          </button>
+        </div>
       )}
     </div>
   );

@@ -32,7 +32,7 @@ export default function Hackernews() {
   }, []);
   return (
     <>
-      <h1 className="text-3xl mb-8">Hackernews</h1>
+      <h1>Hackernews</h1>
       <ol className="flex flex-col gap-y-8">
         {isLoading &&
           Array(10)
