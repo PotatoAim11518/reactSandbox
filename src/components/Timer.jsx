@@ -1,7 +1,7 @@
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 
-// const DEFAULT_TIME = 5 * 60 * 1_000;
-const DEFAULT_TIME = 3 * 1_000;
+const DEFAULT_TIME = 15 * 1_000;
 
 export default function Timer() {
   const [time, setTime] = useState(DEFAULT_TIME);
@@ -26,7 +26,6 @@ export default function Timer() {
     }
     if (active === true) {
       interval = setInterval(() => {
-        console.log("tick");
         setTime((prev) => prev - 1000);
       }, 1000);
     } else {
@@ -38,7 +37,12 @@ export default function Timer() {
   return (
     <>
       <h1>Timer</h1>
-      <h2 className={time <= 10_000 && `text-red-700`}>
+      <h2
+        className={clsx(
+          { "text-red-700": time <= 10_000 },
+          { "text-green-500": time === 0 }
+        )}
+      >
         {toMinuteFormat(time)}
       </h2>
       <section className="flex justify-center items-center gap-6">
