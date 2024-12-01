@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-const DEFAULT_TIME = 5 * 60 * 1_000;
+// const DEFAULT_TIME = 5 * 60 * 1_000;
+const DEFAULT_TIME = 3 * 1_000;
 
 export default function Timer() {
   const [time, setTime] = useState(DEFAULT_TIME);
@@ -19,24 +20,38 @@ export default function Timer() {
 
   useEffect(() => {
     let interval;
+    if (time <= 0) {
+      setTime(0);
+      setActive(false);
+    }
     if (active === true) {
       interval = setInterval(() => {
+        console.log("tick");
         setTime((prev) => prev - 1000);
       }, 1000);
     } else {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [active]);
+  }, [active, time]);
 
   return (
     <>
       <h1>Timer</h1>
-      <h2>{toMinuteFormat(time)}</h2>
+      <h2 className={time <= 10_000 && `text-red-700`}>
+        {toMinuteFormat(time)}
+      </h2>
       <section className="flex justify-center items-center gap-6">
         <Button onClick={() => setActive(true)}>Start</Button>
         <Button onClick={() => setActive(false)}>Stop</Button>
-        <Button onClick={() => setTime(DEFAULT_TIME)}>Reset</Button>
+        <Button
+          onClick={() => {
+            setActive(false);
+            setTime(DEFAULT_TIME);
+          }}
+        >
+          Reset
+        </Button>
       </section>
     </>
   );
