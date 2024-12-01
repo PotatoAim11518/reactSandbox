@@ -6,6 +6,10 @@ h1 {
   @apply text-3xl mb-8;
 }
 
+h2 {
+  @apply text-2xl mb-8;
+}
+
 body {
   @apply bg-slate-800 text-white;
 }

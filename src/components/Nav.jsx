@@ -22,7 +22,8 @@ export default function Nav({ children }) {
             <li key={i}>
               <button
                 onClick={() => handleActiveTab(i)}
-                className="h-3 w-3 rounded-full bg-white "
+                className="h-3 w-3 rounded-full bg-white"
+                style={{ backgroundColor: activeTab === i && "steelblue" }}
               />
             </li>
           ))}

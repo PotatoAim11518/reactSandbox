@@ -1,7 +1,8 @@
 import "./App.css";
+import Nav from "./components/Nav";
 import Hackernews from "./components/Hackernews";
 import MemoryGame from "./components/MemoryGame";
-import Nav from "./components/Nav";
+import Timer from "./components/Timer";
 import { images } from "./lib/constants";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <Nav>
       <Hackernews />
       <MemoryGame images={images} />
+      <Timer />
     </Nav>
   );
 }
