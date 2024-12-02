@@ -4,13 +4,15 @@ import Hackernews from "./components/Hackernews";
 import MemoryGame from "./components/MemoryGame";
 import Timer from "./components/Timer";
 import { images } from "./lib/constants";
+import ShoppingList from "./components/ShoppingList";
 
 function App() {
   return (
     <Nav>
-      <Hackernews />
-      <MemoryGame images={images} />
+      <ShoppingList />
       <Timer />
+      <MemoryGame images={images} />
+      <Hackernews />
     </Nav>
   );
 }

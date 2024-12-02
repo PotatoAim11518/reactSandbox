@@ -32,7 +32,7 @@ export default function MemoryGame({ images }) {
   };
 
   return (
-    <div>
+    <>
       <h1>Memory Game</h1>
       <ul className="flex flex-wrap justify-center items-center gap-10 mt-10">
         {deck.current.map((image, i) => (
@@ -49,7 +49,7 @@ export default function MemoryGame({ images }) {
       </ul>
       {allFlipped && (
         <div className="mt-10">
-          <div className="font-extrabold">Congratulations!</div>
+          <h2 className="font-extrabold">Congratulations!</h2>
           <button
             onClick={handleReset}
             className="m-2 py-2 px-4 bg-slate-700 rounded-full hover:bg-white hover:text-black border-2 hover:border-2 transition"
@@ -58,6 +58,6 @@ export default function MemoryGame({ images }) {
           </button>
         </div>
       )}
-    </div>
+    </>
   );
 }
