@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 
 export default function ShoppingList() {
   const [value, setValue] = useState("");
-  const [items, setItems] = useState(() =>
-    JSON.parse(localStorage.getItem("shoppingItems") || JSON.stringify([]))
+  // const [items, setItems] = useState(() =>
+  //   JSON.parse(localStorage.getItem("shoppingItems") || JSON.stringify([]))
+  // );
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("shoppingItems")) || []
   );
 
   const handleAddItem = () => {
@@ -37,7 +40,6 @@ export default function ShoppingList() {
             type="text"
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            autoComplete={false}
             onKeyDown={handlePressEnter}
             placeholder="Remember to buy..."
           />

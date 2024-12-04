@@ -5,10 +5,12 @@ import MemoryGame from "./components/MemoryGame";
 import Timer from "./components/Timer";
 import { images } from "./lib/constants";
 import ShoppingList from "./components/ShoppingList";
+import ContactBook from "./components/ContactBook";
 
 function App() {
   return (
     <Nav>
+      <ContactBook />
       <ShoppingList />
       <Timer />
       <MemoryGame images={images} />
